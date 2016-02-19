@@ -76,6 +76,14 @@
                                 </segments>
                                 <color key="tintColor" red="0.52549019607843139" green="0.84705882352941175" blue="0.92156862745098034" alpha="1" colorSpace="calibratedRGB"/>
                             </segmentedControl>
+                            <imageView opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" image="list" id="LhH-vs-oK0">
+                                <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
+                                <autoresizingMask key="autoresizingMask"/>
+                            </imageView>
+                            <imageView opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" image="reschedule" id="u5t-mU-FfN">
+                                <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
+                                <autoresizingMask key="autoresizingMask"/>
+                            </imageView>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
                     </view>
@@ -85,8 +93,11 @@
                         <outlet property="archiveIcon" destination="c8h-Ui-5JL" id="RaQ-rS-q9J"/>
                         <outlet property="backgroundView" destination="W1H-Dk-etT" id="AxE-Hv-DlU"/>
                         <outlet property="deleteIcon" destination="ck4-ed-GID" id="ebI-Jg-jRa"/>
+                        <outlet property="feedView" destination="uc8-V9-OVn" id="ewb-FC-PiC"/>
                         <outlet property="laterIcon" destination="0Go-Xc-Z6S" id="KyH-fU-UNl"/>
+                        <outlet property="laterView" destination="u5t-mU-FfN" id="p9U-XO-CLu"/>
                         <outlet property="listIcon" destination="Gii-yn-s1o" id="SS3-0t-WKc"/>
+                        <outlet property="listView" destination="LhH-vs-oK0" id="RvZ-hF-DpG"/>
                         <outlet property="messageImageView" destination="5IB-ub-m4l" id="YcG-Rr-5AF"/>
                         <outlet property="scrollView" destination="0NY-AG-aGC" id="0bR-H0-ZUQ"/>
                     </connections>
@@ -109,10 +120,12 @@
         <image name="help_label" width="320" height="37"/>
         <image name="later_icon" width="25" height="25"/>
         <image name="later_nav_icon" width="25" height="20"/>
+        <image name="list" width="320" height="568"/>
         <image name="list_icon" width="25" height="25"/>
         <image name="mail_nav_icon" width="25" height="20"/>
         <image name="message" width="320" height="86"/>
         <image name="nav" width="320" height="65"/>
+        <image name="reschedule" width="320" height="568"/>
         <image name="search" width="320" height="42"/>
     </resources>
 </document>
