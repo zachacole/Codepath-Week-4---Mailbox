@@ -20,6 +20,12 @@ class MailboxViewController: UIViewController {
     @IBOutlet weak var feedView: UIImageView!
     @IBOutlet weak var listView: UIImageView!
     @IBOutlet weak var laterView: UIImageView!
+    @IBOutlet weak var contentView: UIView!
+    @IBOutlet weak var menuView: UIImageView!
+    
+    var contentOriginalCenter: CGPoint!
+    var contentRightOffset: CGFloat!
+    var contentRight: CGPoint!
     
     var messageOriginalCenter: CGPoint!
     var messageLeftOffset: CGFloat!
@@ -78,6 +84,9 @@ class MailboxViewController: UIViewController {
         listOffset = -260
         listLeft = CGPoint(x: listIcon.center.x + listOffset, y: listIcon.center.y)
         
+        contentRightOffset = 320
+        contentRight = CGPoint(x: contentView.center.x + contentRightOffset, y: contentView.center.y)
+        
         archiveIcon.alpha = 0.3
         deleteIcon.alpha = 0
         laterIcon.alpha = 0.3
@@ -85,12 +94,20 @@ class MailboxViewController: UIViewController {
         
         let listTapGestureRecognizer = UITapGestureRecognizer(target: self, action: "OnCustomListTap:")
         let laterTapGestureRecognizer = UITapGestureRecognizer(target: self, action: "OnCustomLaterTap:")
+        let menuTapGestureRecognizer = UITapGestureRecognizer(target: self, action: "OnCustomMenuTap:")
         
         listView.userInteractionEnabled = true
         laterView.userInteractionEnabled = true
+        menuView.userInteractionEnabled = true
         
         listView.addGestureRecognizer(listTapGestureRecognizer)
         laterView.addGestureRecognizer(laterTapGestureRecognizer)
+        menuView.addGestureRecognizer(menuTapGestureRecognizer)
+        
+        let edgeGesture = UIScreenEdgePanGestureRecognizer(target: self, action: "onEdgePan:")
+        edgeGesture.edges = UIRectEdge.Left
+        contentView.userInteractionEnabled = true
+        contentView.addGestureRecognizer(edgeGesture)
         
     }
 
@@ -101,7 +118,6 @@ class MailboxViewController: UIViewController {
     
     @IBAction func didPanMessage(sender: UIPanGestureRecognizer) {
         let translation = sender.translationInView(view)
-        //let velocity = sender.velocityInView(view)
         
         if sender.state == UIGestureRecognizerState.Began {
             
@@ -291,6 +307,43 @@ class MailboxViewController: UIViewController {
                 self.backgroundView.alpha = 0
                 self.feedView.transform = CGAffineTransformMakeTranslation(0, -86)
             })
+        }
+    }
+    
+    func OnCustomMenuTap(tapGestureRecognizer: UITapGestureRecognizer) {
+        UIView.animateWithDuration(0.3) { () -> Void in
+            self.contentView.center = self.contentOriginalCenter
+        }
+    }
+    
+    func onEdgePan(sender: UIScreenEdgePanGestureRecognizer) {
+        
+        let translation = sender.translationInView(view)
+        let velocity = sender.velocityInView(view)
+        
+        if sender.state == UIGestureRecognizerState.Began {
+            
+            contentOriginalCenter = contentView.center
+            
+        } else if sender.state == UIGestureRecognizerState.Changed {
+            
+            contentView.center = CGPoint(x: contentOriginalCenter.x + translation.x, y: contentOriginalCenter.y)
+            
+        } else if sender.state == UIGestureRecognizerState.Ended {
+            
+            if velocity.x > 0 {
+                
+                UIView.animateWithDuration(0.3, animations: { () -> Void in
+                    self.contentView.center = self.contentRight
+                })
+                
+            } else if velocity.x < 0 {
+                
+                UIView.animateWithDuration(0.3, animations: { () -> Void in
+                    self.contentView.center = self.contentOriginalCenter
+                })
+                
+            }
         }
     }
 
