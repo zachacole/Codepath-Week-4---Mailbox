@@ -19,7 +19,7 @@
                             </imageView>
                             <view contentMode="scaleToFill" id="86p-m8-dxX" userLabel="ContainerView">
                                 <rect key="frame" x="0.0" y="0.0" width="320" height="1432"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                                 <subviews>
                                     <imageView opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" image="help_label" id="3t5-4O-Tqa">
                                         <rect key="frame" x="0.0" y="64" width="320" height="37"/>
@@ -34,7 +34,7 @@
                                         <autoresizingMask key="autoresizingMask"/>
                                     </imageView>
                                     <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" id="0NY-AG-aGC">
-                                        <rect key="frame" x="0.0" y="139" width="320" height="1288"/>
+                                        <rect key="frame" x="0.0" y="144" width="320" height="1288"/>
                                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                                         <subviews>
                                             <view contentMode="scaleToFill" id="W1H-Dk-etT">
